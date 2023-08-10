@@ -1,0 +1,110 @@
+
+*{
+    margin: 5px auto;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+    box-sizing: border-box;
+}
+
+body{
+	background: #38598b; 
+}
+
+button {
+    margin:0 auto;
+    display: block;
+    background: lightgray;
+    color: #113f67;
+    padding: 5px;
+    border-radius: 8px 10px;
+}
+.container{
+    width: 90%;
+    max-width: 470px;
+	background: #e3e3e3; 
+	color: #113f67; 
+    margin: 100px auto o;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+}
+
+.search{
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search input{
+    border: 0;
+    outline: 0;
+    background:white;
+    color:black;
+    padding: 10px 25px;
+    height: 40px;
+    border-radius: 30px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 12px;
+
+}
+
+.search button{
+    border: 0;
+    outline: 0;
+    background:white;
+    border-radius: 20%;
+    width: 60px;
+    height: 60px;
+    cursor:pointer;
+}
+
+.search button img{
+    width: 18px;
+}
+
+
+
+.weather weather-icon{
+    width: 170px;
+    margin-top: 30px;
+}
+
+
+.weather h1{
+    font-size: 50px;
+    font-weight: 500;
+
+}
+
+.temperature-value p{
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+.details{
+   display:flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 20px;
+   margin-top: -6px; 
+   font-size: 28px;
+
+}
+
+.fiveday {
+    display:flex;
+    justify-content: center;
+}
+
+.weekday{
+    width: 100px;
+}
+
+.fiveday1{
+    width: 80px;
+
+}
+
