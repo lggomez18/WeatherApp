@@ -16,7 +16,13 @@ button {
     color: #113f67;
     padding: 5px;
     border-radius: 8px 10px;
+    cursor: pointer;
 }
+
+input{
+    cursor: pointer;
+}
+
 .container{
     width: 90%;
     max-width: 470px;
