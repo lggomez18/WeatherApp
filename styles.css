@@ -100,17 +100,24 @@ input{
 
 }
 
-.fiveday {
-    display:flex;
-    justify-content: center;
-}
 
 .weekday{
     width: 100px;
 }
 
-.fiveday1{
-    width: 80px;
-
+weather-forecast{
+  margin-top: 20px;
 }
 
+weather-forecast-date{
+    font-size: 12px;
+}
+
+weather-forecast-temperature-min {
+    opacity: 0.6;
+}
+
+
+weather-forecast-temperature{
+    font-size: 13px;
+}
