@@ -58,6 +58,13 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 
 //ShowTemperaturesforCities
+function getForecast (coordinates) {
+  console.log (coordinates);
+  let apiKey = "57d09144bf433da24574a6e95f14182c";
+  let apiUrl=`https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${coordinates.lat}&lon=${coordinates.lon}&dt={time}&appid=${apiKey}&units=metric`;
+console.log(apiUrl);
+axios.get(apiUrl).then(displayForecast);
+} 
 
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temp");
@@ -75,6 +82,7 @@ function showTemperature(response) {
   iconElement.setAttribute ("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute ("alt", response.data.weather[0].description);
 
+  getForecast(response.data.coord);
 
 }
 
@@ -87,5 +95,32 @@ function formatDate(timestamp) {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
   let day = days[date.getDay()];
   return `Last updated on: ${day} ${hours}:${minutes}`;
+}
+
+
+//Weekly Forecast
+function displayForecast(response){
+  console.log(response.data);
+  let forecastElement = document.querySelector ("#forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+  let forecastHTML = `<div class="row"`;
+  days.forEach(function (day) {
+  forecastHTML = forecastHTML + ` <div class="col-2">
+  <div class="weather-forecast-date">${day}</div>
+  <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="" width="42"/>
+</div>
+
+  <div class="weather-forecast-temperature">
+   <span class="weather-forecast-temperature-max">
+    18°C
+   </span> 
+   <span class="weather-forecast-temperature-min">
+    12°C
+  </div>`;
+});
+  
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
 }
 
