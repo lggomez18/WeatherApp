@@ -58,13 +58,7 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 
 //ShowTemperaturesforCities
-function getForecast (coordinates) {
-  console.log (coordinates);
-  let apiKey = "57d09144bf433da24574a6e95f14182c";
-  let apiUrl=`https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${coordinates.lat}&lon=${coordinates.lon}&dt={time}&appid=${apiKey}&units=metric`;
-console.log(apiUrl);
-axios.get(apiUrl).then(displayForecast);
-} 
+
 
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temp");
@@ -97,32 +91,57 @@ function formatDate(timestamp) {
   return `Last updated on: ${day} ${hours}:${minutes}`;
 }
 
+//FormatDayWeeklyForecast
+function formatDay (timestamp){
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
 
 //Weekly Forecast
 function displayForecast(response){
+  
   let forecast= response.data.daily;
   let forecastElement = document.querySelector ("#forecast");
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
-  let forecastHTML = `<div class="row"`;
-  forecast.forEach(function (forecastDay) {
+  //let day = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+ if (index <6) {
   forecastHTML = 
   forecastHTML + 
   ` <div class="col-2">
-  <div class="weather-forecast-date">${forecastDay.dt}</div>
-  <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="42"/>
+  <div class="weather-forecast-date">${formatDay (forecastDay.dt)}</div>
+  <img 
+  src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+  alt="" 
+  width="42"/>
 </div>
 
   <div class="weather-forecast-temperature">
    <span class="weather-forecast-temperature-max">
-  ${forecastDay.temp.max}
+  ${Math.round (forecastDay.temp.max)}°
    </span> 
    <span class="weather-forecast-temperature-min">
-   ${forecastDay.temp.min}
-  </div>`;
+   ${Math.round(forecastDay.temp.min)}°
+   </span> 
+  </div>
+  </div>
+  `;
+ }
 });
   
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 
 }
+
+function getForecast (coordinates) {
+  console.log (coordinates);
+  let apiKey = "57d09144bf433da24574a6e95f14182c";
+  let apiUrl=`https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+console.log(apiUrl);
+axios.get(apiUrl).then(displayForecast);
+} 
 
