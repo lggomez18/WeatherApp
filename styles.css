@@ -101,16 +101,17 @@ input{
 }
 
 
-.weekday{
-    width: 100px;
-}
 
 weather-forecast{
   margin-top: 20px;
+  border:1px solid black;
+  display: flex;
+
 }
 
 weather-forecast-date{
     font-size: 12px;
+    margin-top: 2%;
 }
 
 weather-forecast-temperature-min {
