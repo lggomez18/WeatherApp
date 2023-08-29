@@ -1,9 +1,7 @@
 //Button Geolocation API
 
 function showPosition(position) {
-  //SC let apiKey="082d3d02ffdb12f2fd9b259e2ced1d0d";
-  //TESTlet apiKey="c819171fe0abdc14039af4ef5dda283b";
-  //ORIGINALlet apiKey = "57d09144bf433da24574a6e95f14182c";
+  let apiKey = "57d09144bf433da24574a6e95f14182c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
@@ -23,9 +21,7 @@ function search(event) {
 }
 
 function searchCity(city) {
-  let apiKey="082d3d02ffdb12f2fd9b259e2ced1d0d";
-  //TESTlet apiKey="c819171fe0abdc14039af4ef5dda283b";
-  //ORIGINALlet apiKey = "57d09144bf433da24574a6e95f14182c";
+  let apiKey = "57d09144bf433da24574a6e95f14182c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showTemperature);
@@ -113,18 +109,18 @@ function displayForecast(response) {
         ` <div class="col-2">
   <div class="weather-forecast-date" >${formatDay(forecastDay.dt)}</div>
   <img 
-  src="https://openweathermap.org/img/wn/${enconreURIComponent(forecastDay.weather[0].icon)}@2x.png" 
+  src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
   alt="" 
   width="42"/>
 </div>
 
   <div class="weather-forecast-temperature">
    <span class="weather-forecast-temperature-max">
-  High:${Math.round(forecastDay.temp.max)}°C
+  High:${Math.round(forecastDay.temp.max)}Â°C
    </span>
    <br />
    <span class="weather-forecast-temperature-min">
-  Low:${Math.round(forecastDay.temp.min)}°C
+  Low:${Math.round(forecastDay.temp.min)}Â°C
    </span> 
   </div>
   </div>
@@ -137,10 +133,9 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  let apiKey="082d3d02ffdb12f2fd9b259e2ced1d0d";
-  //console.log(coordinates);
-  //DO NOT ERASE APIKEY let apiKey = "c819171fe0abdc14039af4ef5dda283b";
+  console.log(coordinates);
+  let apiKey = "c819171fe0abdc14039af4ef5dda283b";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  //console.log(apiUrl);
+  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
