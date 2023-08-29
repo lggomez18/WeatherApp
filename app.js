@@ -139,3 +139,11 @@ function getForecast(coordinates) {
   console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
+
+function showCurrentWeather(event) {
+  event.preventDefault();
+  searchCity(getPosition);
+}
+
+//searchCity("Austin");
+showCurrentWeather(); // Call the function without an event
