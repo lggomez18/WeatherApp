@@ -140,7 +140,7 @@ function getForecast(coordinates) {
   let apiKey="082d3d02ffdb12f2fd9b259e2ced1d0d";
   //console.log(coordinates);
   //DO NOT ERASE APIKEY let apiKey = "c819171fe0abdc14039af4ef5dda283b";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${apiKey}&units=metric`;
   //console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
